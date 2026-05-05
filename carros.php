@@ -1,29 +1,43 @@
-class Carro {
-    private string $placa;
-    private string $modelo;
-    private string $cor;
+<?php
+    class Carros {
+        private string $placa;
+        private string $modelo;
+        private string $cor;
 
-    public function getPlaca() {
-        return $this->placa;
-    }
+        public function getPlaca() {
+            return $this->placa;
+        }
 
-    public function setPlaca($placa) {
-        $this->placa = $placa;
-    }
+        public function setPlaca($placa) {
+            $this->placa = $placa;
+        }
 
-    public function getModelo() {
-        return $this->modelo;
-    }
+        public function getModelo() {
+            return $this->modelo;
+        }
 
-    public function setModelo($modelo) {
-        $this->modelo = $modelo;
-    }
+        public function setModelo($modelo) {
+            $this->modelo = $modelo;
+        }
 
-    public function getCor() {
-        return $this->cor;
-    }
+        public function getCor() {
+            return $this->cor;
+        }
 
-    public function setCor($cor) {
-        $this->cor = $cor;
+        public function setCor($cor) {
+            $this->cor = $cor;
+        }
+
+        public function __construct($placa, $modelo, $cor){
+                $this-> placa = $placa;
+                $this-> modelo = $modelo;
+                $this-> cor = $cor;
+        }
+        
+        public function imprimirCarro(){
+            echo"<p>Placa: " . $this->placa ."</p>" . 
+                "<p>Modelo: " . $this->modelo ."</p>" . 
+                "<p>Cor: " . $this->cor ."</p>" ;
+        }
     }
-}
+?>

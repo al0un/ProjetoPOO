@@ -1,15 +1,20 @@
 <?php
-        class Quarto {
+    class Quarto {
         private string $nomeQuarto;
         private string $descricao;
         private string $situacao;
-        private string $precoQuarto;
+        private float $precoQuarto;
 
-        public function __construct($nomeQuarto, $descricao, $situacao, $precoQuarto){
-            $this-> nomeQuarto = $nomeQuarto;
-            $this-> descricao = $descricao;
-            $this-> situacao = $situacao;
-            $this-> precoQuarto = $precoQuarto;
+        public function __construct(
+            string $nomeQuarto,
+            string $descricao,
+            string $situacao,
+            float $precoQuarto
+        ) {
+            $this->nomeQuarto = $nomeQuarto;
+            $this->descricao = $descricao;
+            $this->situacao = $situacao;
+            $this->precoQuarto = $precoQuarto;
         }
 
         public function getNomeQuarto() {
@@ -42,15 +47,6 @@
 
         public function setPrecoQuarto($precoQuarto) {
             $this->precoQuarto = $precoQuarto;
-        }
-    
-
-        public function imprimirQuarto(){
-            echo "<P><strong>Numero do quarto: </strong>" . $this-> nomeQuarto . "</P>";
-            echo "<P><strong>Descrição do quarto: </strong>" . $this-> descricao . "</P>";
-            echo "<P><strong>Situação do quarto: </strong>" . $this-> situacao . "</P>";
-            echo "<P><strong>Preço do quarto: </strong>" . $this-> precoQuarto . "</P>";
-
         }
     }
 ?>

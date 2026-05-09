@@ -1,10 +1,11 @@
 <?php
-    class Reservas {
+    class Reserva {
         private Cliente $cliente;
-        private string $horario;
-        private string $dia;
         private Quarto $quarto;
         private array $servicos = []; // array de Servicos
+        private int $quantidadeHoras;
+        private string $dia;
+
 
         public function getCliente() {
             return $this->cliente;
@@ -14,12 +15,12 @@
             $this->cliente = $cliente;
         }
 
-        public function getHorario() {
-            return $this->horario;
+        public function getQuantidadeHoras() {
+            return $this->quantidadeHoras;
         }
 
-        public function setHorario($horario) {
-            $this->horario = $horario;
+        public function setQuantidadeHoras(int $quantidadeHoras) {
+            $this->quantidadeHoras = $quantidadeHoras;
         }
 
         public function getDia() {
@@ -42,18 +43,26 @@
             return $this->servicos;
         }
 
-        public function adicionarServico(Servicos $servico) {
+        public function adicionarServico(Servico $servico) {
             $this->servicos[] = $servico;
         }
 
-        public function calcularPrecoReserva() {
-            $total = $this->quarto->getPrecoQuarto();
-
-            foreach ($this->servicos as $servico) {
+        public function calcularTotalServicos() {
+            $total = 0;
+            foreach($this->servicos as $servico) {
                 $total += $servico->getPreco();
             }
-
             return $total;
+        }
+
+        public function calcularTotalQuarto() {
+            return $this->quarto->getPrecoQuarto()
+                * $this->quantidadeHoras;
+        }
+
+        public function calcularPrecoReserva() {
+            return $this->calcularTotalQuarto()
+                + $this->calcularTotalServicos();
         }
     } 
 ?>

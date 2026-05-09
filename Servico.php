@@ -1,5 +1,5 @@
 <?php
-    class Servicos {
+    class Servico {
         private float $preco;
         private string $tipoServico;
 
@@ -24,9 +24,5 @@
             $this-> tipoServico = $tipoServico;
         }
 
-        public function imprimirServico(){
-            echo"<p>Serviço: " . $this->tipoServico ."</p>" . 
-            "<p>Preço: " . $this->preco ."</p>" ;
-        }
     }
 ?>

@@ -1,5 +1,5 @@
 <?php
-    class Carros {
+    class Carro {
         private string $placa;
         private string $modelo;
         private string $cor;
@@ -34,10 +34,5 @@
                 $this-> cor = $cor;
         }
         
-        public function imprimirCarro(){
-            echo"<p>Placa: " . $this->placa ."</p>" . 
-                "<p>Modelo: " . $this->modelo ."</p>" . 
-                "<p>Cor: " . $this->cor ."</p>" ;
-        }
     }
 ?>

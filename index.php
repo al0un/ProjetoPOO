@@ -1,9 +1,9 @@
 <?php
-    require "Carros.php";
-    require "Clientes.php";
-    require "Quartos.php";
-    require "Servicos.php";
-    require "Reservas.php";
+    require "Carro.php";
+    require "Cliente.php";
+    require "Quarto.php";
+    require "Servico.php";
+    require "Reserva.php";
 ?>
 
 

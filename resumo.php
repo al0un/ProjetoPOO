@@ -95,86 +95,96 @@ $totalReserva = $reserva->calcularPrecoReserva();
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Resumo da Reserva</title>
-</head>
-<body>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Resumo da Reserva</title>
+    </head>
+    <body>
 
-<h1>Resumo da Reserva</h1>
+        <h1>Resumo da Reserva</h1>
 
-<h3>Cliente</h3>
+        <h3>Cliente</h3>
 
-<p>
-    <strong>Telefone:</strong>
-    <?= $cliente->getTelefone(); ?>
-</p>
+        <p>
+            <strong>Telefone:</strong>
+            <?= $cliente->getTelefone(); ?>
+        </p>
 
-<h3>Carro</h3>
+        <h3>Carro</h3>
 
-<p>
-    <strong>Placa:</strong>
-    <?= $carro->getPlaca(); ?>
-</p>
+        <p>
+            <strong>Placa:</strong>
+            <?= $carro->getPlaca(); ?>
+        </p>
 
-<p>
-    <strong>Modelo:</strong>
-    <?= $carro->getModelo(); ?>
-</p>
+        <p>
+            <strong>Modelo:</strong>
+            <?= $carro->getModelo(); ?>
+        </p>
 
-<p>
-    <strong>Cor:</strong>
-    <?= $carro->getCor(); ?>
-</p>
+        <p>
+            <strong>Cor:</strong>
+            <?= $carro->getCor(); ?>
+        </p>
 
-<h3>Reserva</h3>
+        <h3>Reserva</h3>
 
-<p>
-    <strong>Dia:</strong>
-    <?= $reserva->getDia(); ?>
-</p>
+        <p>
+            <strong>Dia:</strong>
+            <?= $reserva->getDia(); ?>
+        </p>
 
-<p>
-    <strong>Quarto:</strong>
-    <?= $quartoEscolhido->getNomeQuarto(); ?>
-</p>
+        <p>
+            <strong>Quarto:</strong>
+            <?= $quartoEscolhido->getNomeQuarto(); ?>
+        </p>
 
-<p>
-    <strong>Horas:</strong>
-    <?= $_POST["horas"]; ?>
-</p>
+        <p>
+            <strong>Horas:</strong>
+            <?= $_POST["horas"]; ?>
+        </p>
 
-<p>
-    <strong>Total do quarto:</strong>
-    R$ <?= $totalQuarto; ?>
-</p>
+        <p>
+            <strong>Total do quarto:</strong>
+            R$ <?= $totalQuarto; ?>
+        </p>
 
-<h3>Serviços</h3>
+        <h3>Serviços</h3>
 
-<?php
+        <?php
 
-if(isset($_POST["servicos"])) {
+            if(isset($_POST["servicos"])) {
 
-    foreach($reserva->getServicos() as $servico) {
+                foreach($reserva->getServicos() as $servico) {
 
-        echo "<p>";
-        echo $servico->getTipoServico();
-        echo " - R$ " . $servico->getPreco();
-        echo "</p>";
-    }
+                    echo "<p>";
+                    echo $servico->getTipoServico();
+                    echo " - R$ " . $servico->getPreco();
+                    echo "</p>";
+                }
 
-} else {
+            } else {
 
-    echo "<p>Nenhum serviço selecionado</p>";
-}
+                echo "<p>Nenhum serviço selecionado</p>";
+            }
 
-?>
+        ?>
 
-<h2>
-    Total da Reserva:
-    R$ <?= $totalReserva; ?>
-</h2>
+        <h2>
+            Total da Reserva:
+            R$ <?= $totalReserva; ?>
+        </h2>
 
-</body>
+            <!-- Forma de pagamento-->
+
+        <a href="pagamento.php">
+            <button>
+                <h3>PAGAR</h3>
+            </button>
+        </a>
+
+
+
+    </body>
 </html>

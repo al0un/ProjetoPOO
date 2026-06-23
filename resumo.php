@@ -176,13 +176,41 @@ $totalReserva = $reserva->calcularPrecoReserva();
             R$ <?= $totalReserva; ?>
         </h2>
 
-            <!-- Forma de pagamento-->
+        <hr>
 
-        <a href="pagamento.php">
-            <button>
-                <h3>PAGAR</h3>
-            </button>
-        </a>
+        <h1>Escolha a forma de pagamento</h1>
+
+            <a href="pagamentoDebito.php">
+                <button>
+                    Débito
+                </button>
+            </a>
+
+            <br><br>
+        
+            <a href="pagamentoCredito.php">
+                <button>
+                    Crédito
+                </button>
+            </a>
+
+            <br><br>
+
+            <a href="pagamentoDinheiro.php">
+                <button>
+                    Dinheiro
+                </button>
+            </a>
+
+            <br><br>
+
+            <a href="pagamentoPix.php">
+                <button>
+                    Pix
+                </button>
+            </a>
+
+        <br><br><br>
 
 
 

@@ -28,7 +28,8 @@
         }
 
         public function setDia($dia) {
-            $this->dia = $dia;
+            $data = new DateTime($dia);
+            $this->dia = $data->format('d/m/Y');
         }
 
         public function getQuarto() {

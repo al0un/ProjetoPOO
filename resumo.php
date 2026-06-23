@@ -4,7 +4,44 @@ require "Carro.php";
 require "Cliente.php";
 require "Quarto.php";
 require "Servico.php";
+require "FormaPagamento.php";
+require "CartaoCredito.php";
 require "Reserva.php";
+require "Pix.php";
+require "Dinheiro.php";
+    
+
+/* FORMAS PAGAMNETP*/
+
+    $meuCredito = new CartaoCredito();
+
+    $meuCartao = new Cartao();
+
+    $meuDinheiro = new Dinheiro();
+
+    $meuPix = new Pix();
+
+    /* -------- ESCOLHER FORMA -------- */
+
+    $pagamentoEscolhido = ($_POST["pagamento"]);
+
+    if($pagamentoEscolhido == "Debito"){
+         $pagamentoEscolhido = $meuCartao;
+    }else
+
+    if($pagamentoEscolhido == "Credito"){
+        $pagamentoEscolhido = $meuCredito;
+    }else
+
+    if($pagamentoEscolhido == "Pix"){
+        $pagamentoEscolhido = $meuPix;
+    }else
+
+    if($pagamentoEscolhido == "Dinheiro"){
+        $pagamentoEscolhido = $meuDinheiro;
+    }
+    
+
 
 /* -------- CARRO -------- */
 
@@ -175,5 +212,23 @@ $totalReserva = $reserva->calcularPrecoReserva();
             Total da Reserva:
             R$ <?= $totalReserva; ?>
         </h2>
+
+        <hr>
+
+        <h1>Pagamento</h1>
+
+        <?php
+            $pagamentoEscolhido->pagar();
+
+            if($pagamentoEscolhido == $meuCredito){
+                $pagamentoEscolhido->parcelar();
+            }elseif($pagamentoEscolhido == $meuDinheiro){
+                $pagamentoEscolhido->troco();
+            }
+        ?>
+        <p></p>
+
+
+
     </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
     require "Carro.php";
     require "Cliente.php";
     require "Quarto.php";
@@ -120,7 +119,3 @@
         
     </body>
     </html>
-=======
-    header('Location: views/home');
-?>
->>>>>>> Stashed changes

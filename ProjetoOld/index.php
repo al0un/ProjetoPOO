@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
     require "Carro.php";
     require "Cliente.php";
     require "Quarto.php";
@@ -83,6 +82,35 @@
             Massagem - R$150
             <br><br>
 
+            <hr>
+
+            <h1>Escolha a forma de pagamento</h1>
+
+            <br>
+        
+            <select name="pagamento">
+
+                <option value="Debito">
+                    Débito
+                </option>
+
+                <option value="Credito">
+                    Credito
+                </option>
+
+                <option value="Pix">
+                    Pix
+                </option>
+
+                <option value="Dinheiro">
+                    Dinheiro
+                </option>
+
+            </select>
+
+            <br><br><br>
+
+
             <button type="submit">
                 Reservar
             </button>
@@ -91,7 +119,3 @@
         
     </body>
     </html>
-=======
-    header('Location: views/home');
-?>
->>>>>>> Stashed changes

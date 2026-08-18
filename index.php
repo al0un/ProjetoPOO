@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
     require "Carro.php";
     require "Cliente.php";
     require "Quarto.php";

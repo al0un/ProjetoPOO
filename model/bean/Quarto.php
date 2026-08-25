@@ -6,7 +6,7 @@
         private $descricao;
         private $situacao;
         private $preco;
-    }
+    
 
     //Métodos de encapsulamento (getters e setters)
     public function getIdquarto(){
@@ -46,6 +46,7 @@
     }
     public function setPreco($preco){
         return $this-> preco = $preco;
+    }
     }
 
 ?>

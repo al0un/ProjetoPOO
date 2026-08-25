@@ -1,3 +1,11 @@
+<?php
+    //INCLUIR O ARQUIVO PARA CARREGAMENTO DAS CLASSES
+    require "../../autoload.php";
+
+    //Instanciar um objeto da classe DAO
+    $dao = new QuartoDAO
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -354,7 +362,7 @@
             <?php include "../menu/navbar.php" ?>;
 
           </div>
-        </div>
+        //</div>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
@@ -364,9 +372,23 @@
           </div>
           
           <div class="table-responsive small">
-            <p>
-              Aqui ficará o conteúdo do motel
-            </p>
+            <table class="table table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                </tr>
+                <?php foreach($dao->read() as $quarto) : ?>
+                    <tr>
+                        <td>    <?= $quarto->getIdquarto() ?>    </td>
+                        <td>    <?= $quarto->getNome() ?>    </td>
+                        <td>    <?= $quarto->getDescricao() ?>    </td>
+                        <td>    <?= $quarto->getSituacao() ?>    </td>
+                        <td>    <?= $quarto->getPreco() ?>    </td>
+                    </tr> 
+                <?php endforeach ?>
+            </table>
           </div>
         </main>
       </div>

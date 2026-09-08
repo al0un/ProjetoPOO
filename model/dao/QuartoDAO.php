@@ -12,10 +12,10 @@
                     $quarto = new Quarto(); //Classe Bean
 
                     $quarto->setIdquarto($linha['id_quarto']);
-                    $quarto->setNome($linha['id_quarto']);
-                    $quarto->setDescricao($linha['id_quarto']);
-                    $quarto->setSituacao($linha['id_quarto']);
-                    $quarto->setPreco($linha['id_quarto']);
+                    $quarto->setNome($linha['nome']);
+                    $quarto->setDescricao($linha['descricao']);
+                    $quarto->setSituacao($linha['situacao']);
+                    $quarto->setPreco($linha['preco']);
 
                     array_push($listaQuartos, $quarto);
 

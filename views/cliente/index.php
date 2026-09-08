@@ -3,7 +3,7 @@
     require "../../autoload.php";
 
     //Instanciar um objeto da classe DAO
-    $dao = new QuartoDAO
+    $dao = new ClienteDAO
 ?>
 
 <!doctype html>
@@ -376,17 +376,13 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Descricao</th>
-                    <th>Situacao</th>
-                    <th>Preco</th>
+                    <th>Telefone</th>
                 </tr>
-                <?php foreach($dao->read() as $quarto) : ?>
+                <?php foreach($dao->read() as $cliente) : ?>
                     <tr>
-                        <td>    <?= $quarto->getIdquarto() ?>    </td>
-                        <td>    <?= $quarto->getNome() ?>    </td>
-                        <td>    <?= $quarto->getDescricao() ?>    </td>
-                        <td>    <?= $quarto->getSituacao() ?>    </td>
-                        <td>    <?= $quarto->getPreco() ?>    </td>
+                        <td>    <?= $cliente->getIdcliente() ?>    </td>
+                        <td>    <?= $cliente->getNome() ?>    </td>
+                        <td>    <?= $cliente->getTelefone() ?>    </td>
                     </tr> 
                 <?php endforeach ?>
             </table>

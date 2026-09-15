@@ -1,5 +1,24 @@
 <?php
     class ClienteDAO {
+        public function create($cliente){
+            try {
+                $query = BD::getConexao()->prepare(
+                    "INSERT INTO cliente(nome, telefone) VALUES (:n, :t) "
+                );
+                $query->bindValue(':n', $cliente->getNome() , PDO::PARAM_STR);
+                $query->bindValue(':t', $cliente->getTelefone() , PDO::PARAM_STR);
+
+                 if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+            }
+            catch(PDOException $e){
+                echo "Erro #1 " . $e-> getMessage();
+               
+            }
+        }
+
+
         public function read () {
             try {
                 $query = BD::getConexao()->prepare("SELECT * FROM cliente");
@@ -22,7 +41,6 @@
                 return $listaClientes;
             }
             catch(PDOException $e){
-                //ALterar para se encaixar com a classe cliente depois
                 echo "Erro #2 " . $e-> getMessage();
                
             }

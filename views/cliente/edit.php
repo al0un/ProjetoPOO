@@ -1,9 +1,8 @@
 <?php
-    //INCLUIR O ARQUIVO PARA CARREGAMENTO DAS CLASSES
     require "../../autoload.php";
 
-    //Instanciar um objeto da classe DAO
-    $dao = new ClienteDAO
+    $dao = new ClienteDAO();
+    $cliente = $dao->find($_GET['id']);
 ?>
 
 <!doctype html>
@@ -367,37 +366,26 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Clientes</h1>
+            <h1 class="h2">Editar Cliente</h1>
           </div>
 
-          <p>
-            <a href="create.php">Novo Cliente</a>
-          </p>
-          
           <div class="table-responsive small">
-            <table class="table table-hover">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Ações</th>
-                </tr>
-                <?php foreach($dao->read() as $cliente) : ?>
-                    <tr>
-                        <td>    <?= $cliente->getIdcliente() ?>    </td>
-                        <td>    <?= $cliente->getNome() ?>    </td>
-                        <td>    <?= $cliente->getTelefone() ?>    </td>
-                        <td>
-                          <a href="edit.php?id=<?= $cliente->getIdcliente() ?>">
-                            Editar
-                          </a>
-                          <a href="destroy.php?id=<?= $cliente->getIdcliente() ?>">
-                            Excluir
-                          </a>
-                        </td>
-                    </tr> 
-                <?php endforeach ?>
-            </table>
+            <form action="update.php" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" value="<?=$cliente->getNome() ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" name="telefone" value="<?=$cliente->getTelefone() ?>" class="form-control">
+                </div>
+
+                <input type="hidden" name="id" value="<?=$cliente->getIdcliente() ?>">
+                <div class="form-group">
+                    <input type="reset" value="Limpar" class="btn">
+                    <input type="submit" value="Salvar" class="btn btn-success">
+                </div>
+            </form>
           </div>
         </main>
       </div>

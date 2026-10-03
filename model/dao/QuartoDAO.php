@@ -1,5 +1,24 @@
 <?php
     class QuartoDAO {
+        public function create($quarto){
+            try {
+                $query = BD::getConexao()->prepare(
+                    "INSERT INTO quarto(nome, descricao, situacao, preco) VALUES (:nq, :dq, :sq, :pq) "
+                );
+                $query->bindValue(':nq', $quarto->getNome() ,      PDO::PARAM_STR);
+                $query->bindValue(':dq', $quarto->getDescricao() , PDO::PARAM_STR);
+                $query->bindValue(':sq', $quarto->getSituacao() ,  PDO::PARAM_STR);
+                $query->bindValue(':pq', $quarto->getPreco() ,     PDO::PARAM_STR);
+
+                 if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+            }
+            catch(PDOException $e){
+                echo "Erro #1 " . $e-> getMessage();
+               
+            }
+        }
         public function read () {
             try {
                 $query = BD::getConexao()->prepare("SELECT * FROM quarto");

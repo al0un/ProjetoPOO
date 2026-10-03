@@ -1,9 +1,8 @@
 <?php
-    //INCLUIR O ARQUIVO PARA CARREGAMENTO DAS CLASSES
     require "../../autoload.php";
 
-    //Instanciar um objeto da classe DAO
-    $dao = new QuartoDAO
+    $dao = new QuartoDAO();
+    $quarto = $dao->find($_GET['id']);
 ?>
 
 <!doctype html>
@@ -364,44 +363,39 @@
           </div>
         //</div>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Quarto</h1>   
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Editar Quarto</h1>
           </div>
 
-          <p>
-            <a href="create.php">Novo Quarto</a>
-          </p>
-          
           <div class="table-responsive small">
-            <table class="table table-hover">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Situação</th>
-                    <th>Preço por hora</th>
-                    <th>Ações</th>
-                </tr>
-                <?php foreach($dao->read() as $quarto) : ?>
-                    <tr>
-                        <td>    <?= $quarto->getIdquarto() ?>  </td>
-                        <td>    <?= $quarto->getNome() ?>      </td>
-                        <td>    <?= $quarto->getDescricao() ?> </td>
-                        <td>    <?= $quarto->getSituacao() ?>  </td>
-                        <td>    <?= $quarto->getPreco() ?>     </td>
-                        <td>
-                          <a href="edit.php?id=<?= $quarto->getIdquarto() ?>">
-                            Editar
-                          </a>
-                          <a href="destroy.php?id=<?= $quarto->getIdquarto() ?>">
-                            Excluir
-                          </a>
-                        </td>
-                    </tr> 
-                <?php endforeach ?>
-            </table>
+            <form action="update.php" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" value="<?=$quarto->getNome() ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Descrição</label>
+                    <input type="text" name="descricao" value="<?=$quarto->getDescricao() ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Situação</label>
+                    <input type="text" name="situacao" value="<?=$quarto->getSituacao() ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Preço por hora</label>
+                    <input type="text" name="preco" value="<?=$quarto->getPreco() ?>" class="form-control">
+                </div>
+
+                <input type="hidden" name="id" value="<?=$quarto->getIdquarto() ?>">
+                <div class="form-group">
+                    <input type="reset" value="Limpar" class="btn">
+                    <input type="submit" value="Salvar" class="btn btn-success">
+                </div>
+            </form>
           </div>
-        </main> 
+        </main>
       </div>
     </div>
     <script

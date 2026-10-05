@@ -27,6 +27,48 @@
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
+            .botao-editar {
+        display: inline-block;
+        padding: 7px 10px;
+        background-color: #e4d500;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+
+      .botao-editar:hover {
+        background-color: #dbbd00;
+        color: #fff;
+      }
+       .botao-excluir {
+        display: inline-block;
+        padding: 7px 10px;
+        background-color: #ff0000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+
+      .botao-excluir:hover {
+        background-color: #b10000;
+        color: #fff;
+      }
+      .botao-novo {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #50a501;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+
+      .botao-novo:hover {
+        background-color: #338500;
+        color: #fff;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -371,7 +413,7 @@
           </div>
 
           <p>
-            <a href="create.php">Novo Cliente</a>
+            <a href="create.php" class="botao-novo">Novo Cliente</a>
           </p>
           
           <div class="table-responsive small">
@@ -388,10 +430,10 @@
                         <td>    <?= $cliente->getNome() ?>    </td>
                         <td>    <?= $cliente->getTelefone() ?>    </td>
                         <td>
-                          <a href="edit.php?id=<?= $cliente->getIdcliente() ?>">
+                          <a href="edit.php?id=<?= $cliente->getIdcliente() ?>" class="botao-editar">
                             Editar
                           </a>
-                          <a href="destroy.php?id=<?= $cliente->getIdcliente() ?>">
+                          <a href="destroy.php?id=<?= $cliente->getIdcliente() ?>" class=botao-excluir>
                             Excluir
                           </a>
                         </td>

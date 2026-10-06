@@ -1,5 +1,24 @@
 <?php
     class ServicoDAO {
+        public function create($servico){
+            try {
+                $query = BD::getConexao()->prepare(
+                    "INSERT INTO servico(tipo_servico, preco) VALUES (:tp, :p) "
+                );
+                $query->bindValue(':tp', $servico->getNome() , PDO::PARAM_STR);
+                $query->bindValue(':p', $servico->getTelefone() , PDO::PARAM_STR);
+
+                 if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+            }
+            catch(PDOException $e){
+                echo "Erro #1 " . $e-> getMessage();
+               
+            }
+        }
+        
+        
         public function read () {
             try {
                 $query = BD::getConexao()->prepare("SELECT * FROM servico");

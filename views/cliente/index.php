@@ -24,51 +24,10 @@
     />
     <script src="../../js/color-modes.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
-            .botao-editar {
-        display: inline-block;
-        padding: 7px 10px;
-        background-color: #e4d500;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-      }
-
-      .botao-editar:hover {
-        background-color: #dbbd00;
-        color: #fff;
-      }
-       .botao-excluir {
-        display: inline-block;
-        padding: 7px 10px;
-        background-color: #ff0000;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-      }
-
-      .botao-excluir:hover {
-        background-color: #b10000;
-        color: #fff;
-      }
-      .botao-novo {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #50a501;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-      }
-
-      .botao-novo:hover {
-        background-color: #338500;
-        color: #fff;
-      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -169,6 +128,76 @@
         ></path>
       </symbol>
     </svg>
+    <div
+      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    >
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)"
+      >
+        <svg class="bi my-1 theme-icon-active" aria-hidden="true">
+          <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end shadow"
+        aria-labelledby="bd-theme-text"
+      >
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="light"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#sun-fill"></use>
+            </svg>
+            Light
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="dark"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#moon-stars-fill"></use>
+            </svg>
+            Dark
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="auto"
+            aria-pressed="true"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#circle-half"></use>
+            </svg>
+            Auto
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="calendar3" viewBox="0 0 16 16">
         <path
@@ -264,7 +293,7 @@
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
         href="#"
-        >Sistel</a
+        >Company name</a
       >
       <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
@@ -320,7 +349,7 @@
           >
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="sidebarMenuLabel">
-                Sistel
+                Company name
               </h5>
               <button
                 type="button"
@@ -343,7 +372,7 @@
           </div>
 
           <p>
-            <a href="create.php" class="botao-novo">Novo Cliente</a>
+            <a href="create.php">Novo Cliente</a>
           </p>
           
           <div class="table-responsive small">
@@ -360,11 +389,11 @@
                         <td>    <?= $cliente->getNome() ?>    </td>
                         <td>    <?= $cliente->getTelefone() ?>    </td>
                         <td>
-                          <a href="edit.php?id=<?= $cliente->getIdcliente() ?>" class="botao-editar">
-                            Editar
+                          <a title="Editar" href="edit.php?id=<?= $cliente->getIdcliente() ?>">
+                            <i class="bi bi-pencil"></i>
                           </a>
-                          <a href="destroy.php?id=<?= $cliente->getIdcliente() ?>" class=botao-excluir>
-                            Excluir
+                           <a class="link-danger" title="Excluir" href="destroy.php?id=<?= $cliente->getIdcliente() ?>">
+                            <i class="bi bi-trash3"></i>
                           </a>
                         </td>
                     </tr> 

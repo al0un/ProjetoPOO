@@ -83,12 +83,13 @@
                 $query = BD::getConexao()->prepare(
                     "UPDATE quarto
                     SET nome = :nq, descricao = :dq, situacao = :sq, preco = :pq 
-                    WHERE id_quarto = :i"
+                    WHERE id_quarto = :iq"
                 );
                 $query->bindValue(':nq', $quarto->getNome() , PDO::PARAM_STR);
                 $query->bindValue(':dq', $quarto->getDescricao() , PDO::PARAM_STR);
                 $query->bindValue(':sq', $quarto->getSituacao() , PDO::PARAM_STR);    
                 $query->bindValue(':pq', $quarto->getPreco() , PDO::PARAM_STR);    
+                $query->bindValue(':iq', $quarto->getIdquarto() , PDO::PARAM_STR);    
 
                  if(!$query->execute()){
                     print r($query->errorInfo());

@@ -24,6 +24,7 @@
     />
     <script src="../../js/color-modes.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
     <style>
@@ -381,12 +382,21 @@
                     <th>ID</th>
                     <th>Tipo de Servico</th>
                     <th>Preco</th>
+                    <th>Ações</th>
                 </tr>
                 <?php foreach($dao->read() as $servico) : ?>
                     <tr>
                         <td>    <?= $servico->getIdservico() ?>    </td>
                         <td>    <?= $servico->getTiposervico() ?>    </td>
                         <td>    <?= $servico->getPreco() ?>    </td>
+                        <td>
+                          <a title="Editar" href="edit.php?id=<?= $servico->getIdservico() ?>">
+                            <i class="bi bi-pencil"></i>
+                          </a>
+                           <a class="link-danger" title="Excluir" href="destroy.php?id=<?= $servico->getIdservico() ?>">
+                            <i class="bi bi-trash3"></i>
+                          </a>
+                        </td>
                     </tr> 
                 <?php endforeach ?>
             </table>

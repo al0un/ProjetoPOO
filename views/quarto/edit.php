@@ -380,11 +380,11 @@
                     <input type="text" name="descricao" value="<?=$quarto->getDescricao() ?>" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="telefone">Situação</label>
+                    <label for="situacao">Situação</label>
                     <input type="text" name="situacao" value="<?=$quarto->getSituacao() ?>" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="telefone">Preço por hora</label>
+                    <label for="preco">Preço por hora</label>
                     <input type="text" name="preco" value="<?=$quarto->getPreco() ?>" class="form-control">
                 </div>
 

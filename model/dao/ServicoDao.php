@@ -3,9 +3,9 @@
         public function create($servico){
             try {
                 $query = BD::getConexao()->prepare(
-                    "INSERT INTO servico(tipo_servico, preco) VALUES (:tp, :p) "
+                    "INSERT INTO servico(tipo_servico, preco) VALUES (:t, :p) "
                 );
-                $query->bindValue(':tp', $servico->getNome() , PDO::PARAM_STR);
+                $query->bindValue(':t', $servico->getTiposervico() , PDO::PARAM_STR);
                 $query->bindValue(':p', $servico->getPreco() , PDO::PARAM_STR);
 
                  if(!$query->execute()){
@@ -58,20 +58,58 @@
                 }
 
                 if($linha = $query->fetch(PDO::FETCH_ASSOC)){
-                    $quarto = new Servico(); //Classe Bean
+                    $servico = new Servico(); //Classe Bean
 
-                    $quarto->setIdquarto($linha['id_quarto']);
-                    $quarto->setNome($linha['nome']);
-                    $quarto->setDescricao($linha['descricao']);
-                    $quarto->setSituacao($linha['situacao']);
-                    $quarto->setPreco($linha['preco']);
+                    $servico->setIdservico($linha['id_servico']);
+                    $servico->setTiposervico($linha['tipo_servico']);
+                    $servico->setPreco($linha['preco']);
 
                 }
 
-                return $quarto;
+                return $servico;
             }
             catch(PDOException $e){
                 echo "Erro #3 " . $e-> getMessage();
+               
+            }
+        }
+
+        public function update($servico){
+            try {
+                $query = BD::getConexao()->prepare(
+                    "UPDATE servico
+                    SET tipo_servico = :t, preco = :p
+                    WHERE id_servico = :i"
+                );
+                $query->bindValue(':t', $servico->getTiposervico() , PDO::PARAM_STR);
+                $query->bindValue(':p', $servico->getPreco() , PDO::PARAM_STR);
+                $query->bindValue(':i', $servico->getIdservico() , PDO::PARAM_STR);
+
+                 if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+            }
+            catch(PDOException $e){
+                echo "Erro #4 " . $e-> getMessage();
+               
+            }
+        }
+
+        public function destroy($id){
+            try {
+                $query = BD::getConexao()->prepare(
+                    "DELETE FROM servico
+                    WHERE id_servico = :i"
+                );
+
+                $query->bindValue(':i', $id, PDO::PARAM_STR);
+
+                 if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+            }
+            catch(PDOException $e){
+                echo "Erro #5 " . $e-> getMessage();
                
             }
         }

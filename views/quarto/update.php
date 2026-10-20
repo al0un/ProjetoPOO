@@ -18,5 +18,5 @@
     $dao->update($quarto);
 
     // Redirecionar para o index
-    //header('location: index.php');
+    header('location: index.php');
 ?>

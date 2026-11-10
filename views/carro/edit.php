@@ -4,7 +4,8 @@
     $dao = new CarroDAO();
     $carro = $dao->find($_GET['id']);
 
-    $daoCliente = new ClienteDao();
+    // Instanciar um objeto da classe ClienteDao
+    $daoCliente = new ClienteDAO();
 ?>
 
 <!doctype html>
@@ -375,23 +376,25 @@
             <form action="insert.php" method="post">
                 <div class="form-group">
                     <label for="modelo">Modelo</label>
-                    <input type="text" name="modelo" value="<?=$carro->getModelo()?>" class="form-control">
+                    <input type="text" name="modelo" value="<?= $carro->getModelo() ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="placa">Placa</label>
-                    <input type="text" name="placa" value="<?=$carro->getPlaca()?>" class="form-control">
+                    <input type="text" name="placa" value="<?= $carro->getPlaca() ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="cor">Cor</label>
-                    <input type="text" name="cor" value="<?=$carro->getCor()?>" class="form-control">
+                    <input type="text" name="cor" value="<?= $carro->getCor() ?>" class="form-control">
                 </div>
                 
 
-                <div>
-                    <label for="id_cliente">Cliente</label>
-                    <select name="id_cliente" class="form-control">
+                <div class="form-group">
+                    <label for="id_cliente">Clientes:</label>
+                    <select name="id_cliente" id="id_cliente" class="form-control">
                         <?php foreach($daoCliente->read() as $cliente) : ?>
-                        <option value="<?= $cliente->getIdcliente() ?>"><?= $cliente->getNome() ?></option>
+                        <option <?= ($cliente->getIdCliente() == $carro->getCliente()->getIdCliente()) ? 'selected' : '' ?> value="<?= $cliente->getIdcliente() ?>">
+                            <?= $cliente->getNome()?>
+                        </option>
                         <?php endforeach ?>
                     </select>
                 </div>

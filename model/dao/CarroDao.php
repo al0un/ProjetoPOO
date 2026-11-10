@@ -56,11 +56,11 @@
 
         public function find ($id) {
             try {
-                $query = BD::getConexao()->prepare("SELECT * FROM carro WHERE idCarro = :i");
+                $query = BD::getConexao()->prepare("SELECT * FROM carro WHERE id_carro = :i");
                 $query->bindValue(':i', $id, PDO::PARAM_INT);
 
                 if(!$query->execute()){
-                    print r($query->errorInfo());
+                    print_r($query->errorInfo());
                 }
 
                 if($linha = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -74,35 +74,37 @@
                     $daoCliente = new ClienteDAO();
                     $cliente = $daoCliente->find($linha['id_cliente']);
                     $carro->setCliente($cliente);
+
                 }
 
                 return $carro;
             }
             catch(PDOException $e){
-                echo "Erro #3 " . $e-> getMessage();
+                echo "Erro #2 " . $e-> getMessage();
                
             }
         }
 
         public function update($carro){
             try {
-                $query = BD::getConexao()->prepare(
+                 $query = BD::getConexao()->prepare(
                     "UPDATE carro
-                    SET placa = :p, modelo = :m, cor = :c, id_cliente =:ic
-                    WHERE idCarro= :i"
+                    SET placa = :p, modelo = :m, cor = :c
+                    WHERE id_carro = :i"
                 );
                 $query->bindValue(':p', $carro->getPlaca() , PDO::PARAM_STR);
                 $query->bindValue(':m', $carro->getModelo() , PDO::PARAM_STR);
                 $query->bindValue(':c', $carro->getCor() , PDO::PARAM_STR);
                 //Bind para a chave estrangeira
                 $query->bindValue(':ic', $carro->getCliente()-> getIdcliente(), PDO::PARAM_INT);
+                $query->bindValue(':i', $carro->getIdCarro(), PDO::PARAM_INT);
 
                  if(!$query->execute()){
-                    print r($query->errorInfo());
+                    print_r($query->errorInfo());
                 }
             }
             catch(PDOException $e){
-                echo "Erro #4 " . $e-> getMessage();
+                echo "Erro #1 " . $e-> getMessage();
                
             }
         }
@@ -111,7 +113,7 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "DELETE FROM carro
-                    WHERE idCarro = :i"
+                    WHERE id_carro = :i"
                 );
 
                 $query->bindValue(':i', $id, PDO::PARAM_STR);

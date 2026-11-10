@@ -284,7 +284,7 @@
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
         href="#"
-        >Company name</a
+        >Sistel</a
       >
       <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
@@ -338,20 +338,8 @@
             id="sidebarMenu"
             aria-labelledby="sidebarMenuLabel"
           >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="sidebarMenuLabel">
-                Company name
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                data-bs-target="#sidebarMenu"
-                aria-label="Close"
-              ></button>
-            </div>
             
-            <?php include "../menu/navbar.php" ?>;
+            <?php include "../menu/navbar.php" ?>
 
           </div>
         </div>

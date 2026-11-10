@@ -1,7 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    $daoCarro = new CarroDAO();
+    $daoCliente = new ClienteDAO();
 ?>
 
 <!doctype html>
@@ -125,76 +125,6 @@
         ></path>
       </symbol>
     </svg>
-    <div
-      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
-    >
-      <button
-        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-        id="bd-theme"
-        type="button"
-        aria-expanded="false"
-        data-bs-toggle="dropdown"
-        aria-label="Toggle theme (auto)"
-      >
-        <svg class="bi my-1 theme-icon-active" aria-hidden="true">
-          <use href="#circle-half"></use>
-        </svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul
-        class="dropdown-menu dropdown-menu-end shadow"
-        aria-labelledby="bd-theme-text"
-      >
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center"
-            data-bs-theme-value="light"
-            aria-pressed="false"
-          >
-            <svg class="bi me-2 opacity-50" aria-hidden="true">
-              <use href="#sun-fill"></use>
-            </svg>
-            Light
-            <svg class="bi ms-auto d-none" aria-hidden="true">
-              <use href="#check2"></use>
-            </svg>
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center"
-            data-bs-theme-value="dark"
-            aria-pressed="false"
-          >
-            <svg class="bi me-2 opacity-50" aria-hidden="true">
-              <use href="#moon-stars-fill"></use>
-            </svg>
-            Dark
-            <svg class="bi ms-auto d-none" aria-hidden="true">
-              <use href="#check2"></use>
-            </svg>
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center active"
-            data-bs-theme-value="auto"
-            aria-pressed="true"
-          >
-            <svg class="bi me-2 opacity-50" aria-hidden="true">
-              <use href="#circle-half"></use>
-            </svg>
-            Auto
-            <svg class="bi ms-auto d-none" aria-hidden="true">
-              <use href="#check2"></use>
-            </svg>
-          </button>
-        </li>
-      </ul>
-    </div>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="calendar3" viewBox="0 0 16 16">
         <path
@@ -290,7 +220,7 @@
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
         href="#"
-        >Company name</a
+        >Sistel</a
       >
       <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
@@ -344,18 +274,6 @@
             id="sidebarMenu"
             aria-labelledby="sidebarMenuLabel"
           >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="sidebarMenuLabel">
-                Company name
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                data-bs-target="#sidebarMenu"
-                aria-label="Close"
-              ></button>
-            </div>
             
             <?php include "../menu/navbar.php" ?>;
 
@@ -382,8 +300,6 @@
                     <label for="cor">Cor</label>
                     <input type="text" name="cor" class="form-control">
                 </div>
-                
-
                 <div>
                     <label for="id_cliente">Cliente</label>
                     <select name="id_cliente" class="form-control">
@@ -392,8 +308,6 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-
-
                 <div class="form-group">
                     <input type="reset" value="Limpar" class="btn">
                     <input type="submit" value="Salvar" class="btn btn-success">

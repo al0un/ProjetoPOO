@@ -57,7 +57,7 @@
         public function find ($id) {
             try {
                 $query = BD::getConexao()->prepare("SELECT * FROM carro WHERE id_filme = :i");
-                $query->bindValue(':i', $id, PDO::PARAM_INT)
+                $query->bindValue(':i', $id, PDO::PARAM_INT);
 
                 if(!$query->execute()){
                     print r($query->errorInfo());

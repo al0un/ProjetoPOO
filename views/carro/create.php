@@ -1,7 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    $daoCliente = new ClienteDAO();
+    $daoCarro = new CarroDAO();
 ?>
 
 <!doctype html>

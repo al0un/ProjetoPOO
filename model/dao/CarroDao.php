@@ -89,7 +89,7 @@
             try {
                  $query = BD::getConexao()->prepare(
                     "UPDATE carro
-                    SET placa = :p, modelo = :m, cor = :c
+                    SET placa = :p, modelo = :m, cor = :c, id_cliente = :ic
                     WHERE id_carro = :i"
                 );
                 $query->bindValue(':p', $carro->getPlaca() , PDO::PARAM_STR);

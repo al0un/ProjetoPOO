@@ -373,7 +373,7 @@
           </div>
 
           <div class="table-responsive small">
-            <form action="insert.php" method="post">
+            <form action="update.php" method="post">
                 <div class="form-group">
                     <label for="modelo">Modelo</label>
                     <input type="text" name="modelo" value="<?= $carro->getModelo() ?>" class="form-control">
@@ -398,8 +398,7 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-
-
+                <input type="hidden" name="id_quarto" value="<?=$carro->getIdcarro() ?>">
                 <div class="form-group">
                     <input type="reset" value="Limpar" class="btn">
                     <input type="submit" value="Salvar" class="btn btn-success">

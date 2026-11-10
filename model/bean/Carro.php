@@ -5,7 +5,7 @@
         private $placa;
         private $modelo;
         private $cor;
-        private $cliente;
+        private $cliente;   
     
 
         //Métodos de encapsulamento (getters e setters)

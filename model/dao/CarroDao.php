@@ -53,5 +53,38 @@
                
             }
         }
+
+        public function find ($id) {
+            try {
+                $query = BD::getConexao()->prepare("SELECT * FROM carro WHERE id_filme = :i");
+                $query->bindValue(':i', $id, PDO::PARAM_INT)
+
+                if(!$query->execute()){
+                    print r($query->errorInfo());
+                }
+
+                if($linha = $query->fetch(PDO::FETCH_ASSOC)) {
+                    $carro = new Carro(); //Classe Bean
+
+                    $carro->setIdcarro($linha['id_carro']);
+                    $carro->setPlaca($linha['placa']);
+                    $carro->setModelo($linha['modelo']);
+                    $carro->setCor($linha['cor']);
+                    //Atributo da assossiação (com Cliente)
+                    $daoCliente = new ClienteDAO();
+                    $cliente = $daoCliente->find($linha['id_cliente']);
+                    $carro->setCliente($cliente);
+
+                    array_push($listacarros, $carro);
+
+                }
+
+                return $listacarros;
+            }
+            catch(PDOException $e){
+                echo "Erro #2 " . $e-> getMessage();
+               
+            }
+        }
     }
 ?>

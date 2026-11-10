@@ -32,11 +32,10 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="../carro">
-                    <svg class="bi" aria-hidden="true">
-                      <use xlink:href="#car"></use>
-                    </svg>
+                    <i class="bi bi-car-front"></i>
                     Carro
                   </a>
+                </li>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">

@@ -36,9 +36,9 @@
                     $reserva = new reserva(); //Classe Bean
 
                     $reserva->setIdreserva($linha['id_reserva']);
-                    $reserva->setDatareserva($linha['dataReserva']);
-                    $reserva->setQuantidadehoras($linha['quantidadehoras']);
-                    $reserva->setValortotal($linha['valortotal']);
+                    $reserva->setDatareserva($linha['data_reserva']);
+                    $reserva->setQuantidadehoras($linha['quantidade_horas']);
+                    $reserva->setValortotal($linha['valor_total']);
                     //Atributo da assossiação (com Cliente)
                     $daoCliente = new ClienteDAO();
                     $cliente = $daoCliente->find($linha['id_cliente']);

@@ -38,19 +38,19 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <a class="nav-link d-flex align-items-center gap-2" href="../formaPagamento/">
                     <svg class="bi" aria-hidden="true">
-                      <use xlink:href="#graph-up"></use>
+                      <use xlink:href="#puzzle"></use>
                     </svg>
-                    Reports
+                    Formas de Pagamento
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="#">
                     <svg class="bi" aria-hidden="true">
-                      <use xlink:href="#puzzle"></use>
+                      <use xlink:href="#graph-up"></use>
                     </svg>
-                    Integrations
+                    Reservas
                   </a>
                 </li>
               </ul>

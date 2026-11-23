@@ -1,4 +1,4 @@
-<div
+            <div
               class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto"
             >
               <ul class="nav flex-column">
@@ -32,8 +32,10 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center gap-2" href="../carro">
-                    <i class="bi bi-car-front"></i>
-                    Carro
+                    <svg class="bi bi-car-front" aria-hidden="true">
+                      <use xlink:href="#car"></use>
+                    </svg>
+                    Carros
                   </a>
                 </li>
                 </li>
@@ -42,7 +44,7 @@
                     <svg class="bi" aria-hidden="true">
                       <use xlink:href="#graph-up"></use>
                     </svg>
-                    Reserva
+                    Reservas
                   </a>
                 </li>
                 <li class="nav-item">

@@ -249,13 +249,13 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Sistel</h1>
+            <h1 class="h2">Bem vindo!</h1>
             
           </div>
           
           <div class="table-responsive small">
             <p>
-              Aqui ficará o conteúdo do motel
+              Sistema realizado para a disciplina de Programação Web
             </p>
           </div>
         </main>

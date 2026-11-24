@@ -5,9 +5,9 @@
                 $query = BD::getConexao()->prepare(
                     "INSERT INTO carro(placa, modelo, cor, id_cliente) VALUES (:p, :m, :c, :ic) "
                 );
-                $query->bindValue(':p', $carro->getPlaca() , PDO::PARAM_STR);
+                $query->bindValue(':p', $carro->getPlaca() ,  PDO::PARAM_STR);
                 $query->bindValue(':m', $carro->getModelo() , PDO::PARAM_STR);
-                $query->bindValue(':c', $carro->getCor() , PDO::PARAM_STR);
+                $query->bindValue(':c', $carro->getCor() ,    PDO::PARAM_STR);
                 //Bind para a chave estrangeira
                 $query->bindValue(':ic', $carro->getCliente()-> getIdcliente(), PDO::PARAM_INT);
 

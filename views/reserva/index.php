@@ -1,9 +1,8 @@
 <?php
-    //INCLUIR O ARQUIVO PARA CARREGAMENTO DAS CLASSES
     require "../../autoload.php";
 
-    //Instanciar um objeto da classe DAO
-    $dao = new ReservaDAO
+    $dao   = new ReservaDAO();
+    $daoRS = new ReservaServicoDAO();
 ?>
 
 <!doctype html>
@@ -258,28 +257,34 @@
           <p>
             <a href="create.php">Nova Reserva</a>
           </p>
-          
+
           <div class="table-responsive small">
             <table class="table table-hover">
                 <tr>
                     <th>ID</th>
-                    <th>Data da Reserva</th>
-                    <th>Quantidade de horas reservadas</th>
-                    <th>Valor total</th>
+                    <th>Data</th>
                     <th>Cliente</th>
                     <th>Quarto</th>
-                    <!-- <th>Forma de Pagamento</th> -->
+                    <th>Horas</th>
+                    <th>Serviços</th>
+                    <th>Pagamento</th>
+                    <th>Valor total</th>
                     <th>Ações</th>
                 </tr>
                 <?php foreach($dao->read() as $reserva) : ?>
                     <tr>
                         <td>    <?= $reserva->getIdreserva() ?>    </td>
-                        <td>    <?= $reserva->getDatareserva() ?>    </td>
-                        <td>    <?= $reserva->getQuantidadehoras() ?>    </td>
-                        <td>    <?= $reserva->getValortotal() ?>    </td>
+                        <td>    <?= date('d/m/Y', strtotime($reserva->getDatareserva())) ?>    </td>
                         <td>    <?= $reserva->getCliente()->getNome() ?>    </td>
                         <td>    <?= $reserva->getQuarto()->getNome() ?>    </td>
-                        <!--  <td>     //$reserva->getPagamento()->getNome() ?>    </td> -->
+                        <td>    <?= $reserva->getQuantidadehoras() ?>    </td>
+                        <td>
+                          <?php foreach($daoRS->readByReserva($reserva->getIdreserva()) as $s) : ?>
+                            <?= $s['tipo_servico'] ?> (x<?= $s['quantidade'] ?>)<br>
+                          <?php endforeach ?>
+                        </td>
+                        <td>    <?= $reserva->getPagamento()->getTipopagamento() ?>    </td>
+                        <td>    R$ <?= number_format($reserva->getValortotal(), 2, ',', '.') ?>    </td>
                         <td>
                           <a title="Editar" href="edit.php?id=<?= $reserva->getIdreserva() ?>">
                             <i class="bi bi-pencil"></i>
@@ -288,7 +293,7 @@
                             <i class="bi bi-trash3"></i>
                           </a>
                         </td>
-                    </tr> 
+                    </tr>
                 <?php endforeach ?>
             </table>
           </div>

@@ -3,19 +3,21 @@
         public function create($reserva){
             try {
                 $query = BD::getConexao()->prepare(
-                    "INSERT INTO reserva(dataReserva, quantidadehoras, valortotal, id_cliente, id_quarto, id_pagamento) VALUES (:dr, :qh, :vt, :ic, :iq, :ip) "
+                    "INSERT INTO reserva(data_reserva, quantidade_horas, valor_total, id_cliente, id_quarto, id_pagamento) VALUES (:dr, :qh, :vt, :ic, :iq, :ip) "
                 );
-                $query->bindValue(':dr', $reserva->getDatareserva() , PDO::PARAM_STR);
+                $query->bindValue(':dr', $reserva->getDatareserva()     , PDO::PARAM_STR);
                 $query->bindValue(':qh', $reserva->getQuantidadehoras() , PDO::PARAM_STR);
-                $query->bindValue(':vt', $reserva->getValortotal() , PDO::PARAM_STR);
+                $query->bindValue(':vt', $reserva->getValortotal()      , PDO::PARAM_STR);
                 //Bind para a chave estrangeira
-                $query->bindValue(':ic', $reserva->getCliente()-> getIdcliente(), PDO::PARAM_INT);
-                $query->bindValue(':iq', $reserva->getQuarto()-> getIdquarto(), PDO::PARAM_INT);
-                //$query->bindValue(':ip', $reserva->getPagamento()-> getIdcliente(), PDO::PARAM_INT);
+                $query->bindValue(':ic', $reserva->getCliente()-> getIdcliente(),   PDO::PARAM_INT);
+                $query->bindValue(':iq', $reserva->getQuarto()-> getIdquarto(),     PDO::PARAM_INT);
+                $query->bindValue(':ip', $reserva->getPagamento()-> getIdpagamento(), PDO::PARAM_INT);
 
                  if(!$query->execute()){
                     print r($query->errorInfo());
                 }
+
+                return BD::getConexao()->lastInsertId();
             }
             catch(PDOException $e){
                 echo "Erro #1 " . $e-> getMessage();
@@ -39,18 +41,21 @@
                     $reserva->setDatareserva($linha['data_reserva']);
                     $reserva->setQuantidadehoras($linha['quantidade_horas']);
                     $reserva->setValortotal($linha['valor_total']);
+
                     //Atributo da assossiação (com Cliente)
                     $daoCliente = new ClienteDAO();
                     $cliente = $daoCliente->find($linha['id_cliente']);
                     $reserva->setCliente($cliente);
+
                     //Atributo da assossiação (com Quarto)
                     $daoQuarto = new QuartoDAO();
                     $quarto = $daoQuarto->find($linha['id_quarto']);
                     $reserva->setQuarto($quarto);
+
                     //Atributo da assossiação (com Pagamento)
-                    //$daoQuarto = new QuartoDAO();
-                    //$quarto = $daoQuarto->find($linha['id_quarto']);
-                    //$reserva->setQuarto($quarto);
+                    $daoPagamento = new PagamentoDAO();
+                    $pagamento = $daoPagamento->find($linha['id_pagamento']);
+                    $reserva->setPagamento($pagamento);
 
                     array_push($listareservas, $reserva);
 
@@ -80,18 +85,21 @@
                     $reserva->setDatareserva($linha['data_reserva']);
                     $reserva->setQuantidadehoras($linha['quantidade_horas']);
                     $reserva->setValortotal($linha['valor_total']);
+
                     //Atributo da assossiação (com Cliente)
                     $daoCliente = new ClienteDAO();
                     $cliente = $daoCliente->find($linha['id_cliente']);
                     $reserva->setCliente($cliente);
+
                     //Atributo da assossiação (com Quarto)
                     $daoQuarto = new QuartoDAO();
                     $quarto = $daoQuarto->find($linha['id_quarto']);
                     $reserva->setQuarto($quarto);
-                    //Atributo da assossiação (com Cliente)
-                    //$daoPagamento = new PagamentoDAO();
-                    //$pagamento = $daoPagamento->find($linha['id_pagamento']);
-                    //$reserva->setPagamento($pagamento);
+
+                    //Atributo da assossiação (com Pagamento)
+                    $daoPagamento = new PagamentoDAO();
+                    $pagamento = $daoPagamento->find($linha['id_pagamento']);
+                    $reserva->setPagamento($pagamento);
 
                 }
 
@@ -107,15 +115,15 @@
             try {
                  $query = BD::getConexao()->prepare(
                     "UPDATE reserva
-                    SET dataReserva = :dr, quantidadehoras = :qh, valortotal = :vt, id_cliente = :ic, id_quarto = :iq, id_pagamento = :ip
+                    SET data_reserva = :dr, quantidade_horas = :qh, valor_total = :vt, id_cliente = :ic, id_quarto = :iq, id_pagamento = :ip
                     WHERE id_reserva = :i"
                 );
-                $query->bindValue(':dr', $reserva->getDatareserva() , PDO::PARAM_STR);
+                $query->bindValue(':dr', $reserva->getDatareserva() ,     PDO::PARAM_STR);
                 $query->bindValue(':qh', $reserva->getQuantidadehoras() , PDO::PARAM_STR);
-                $query->bindValue(':vt', $reserva->getValortotal() , PDO::PARAM_STR);
+                $query->bindValue(':vt', $reserva->getValortotal() ,      PDO::PARAM_STR);
                 //Bind para a chave estrangeira
-                $query->bindValue(':ic', $reserva->getCliente()-> getIdcliente(), PDO::PARAM_INT);
-                $query->bindValue(':iq', $reserva->getQuarto()-> getIdquarto(), PDO::PARAM_INT);
+                $query->bindValue(':ic', $reserva->getCliente()-> getIdcliente(),     PDO::PARAM_INT);
+                $query->bindValue(':iq', $reserva->getQuarto()-> getIdquarto(),       PDO::PARAM_INT);
                 $query->bindValue(':ip', $reserva->getPagamento()-> getIdpagamento(), PDO::PARAM_INT);
                 $query->bindValue(':i', $reserva->getIdreserva(), PDO::PARAM_INT);
 

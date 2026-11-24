@@ -279,7 +279,7 @@
                         <td>    <?= $reserva->getValortotal() ?>    </td>
                         <td>    <?= $reserva->getCliente()->getNome() ?>    </td>
                         <td>    <?= $reserva->getQuarto()->getNome() ?>    </td>
-                        <!--  <td>    <?= //$reserva->getPagamento()->getNome() ?>    </td> -->
+                        <!--  <td>     //$reserva->getPagamento()->getNome() ?>    </td> -->
                         <td>
                           <a title="Editar" href="edit.php?id=<?= $reserva->getIdreserva() ?>">
                             <i class="bi bi-pencil"></i>
